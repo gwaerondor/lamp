@@ -15,4 +15,4 @@ printf -v HEX_BLUE "%02x" "$BLUE"
 printf -v HEX_RED "%02x" "$RED"
 
 #echo "tmp" $TEMP
-echo $HEX_RED "00" $HEX_BLUE
+echo $HEX_RED"00"$HEX_BLUE
