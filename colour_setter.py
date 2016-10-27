@@ -20,14 +20,14 @@ def connect(gatt):
 def send_messages_until_quit(gatt):
     index = 0
     while True:
-        temperature = subprocess.check_output(["bash", "/home/pi/lamp/get_temperature_stockholm_year_high.bash", "{i}".format(i = index)])
+        temperature = subprocess.check_output(["bash", "get_temperature_stockholm_year_high.bash", "{i}".format(i = index)])
         print("Temperature: {t}".format(t=temperature))
-        rgb = subprocess.check_output(["bash", "/home/pi/lamp/get_rgb.bash", "{t}".format(t = temperature)])
-        print("RGB value: {c}".format(c = rgb))
+        rgb = subprocess.check_output(["bash",
+                                       "get_rgb.bash",
+                                       "{t}".format(t = temperature)])
+        print("Setting lamp to RGB value: {c}".format(c = rgb))
         gatt.sendline('char-write-cmd 0x000b 56{c}00f0aa'.format(c=rgb))
         time.sleep(2)
-        index += 1
-        if index == 12:
-            index = 0
+        index = (index + 1) % 12
             
 main()
