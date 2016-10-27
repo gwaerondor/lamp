@@ -22,4 +22,4 @@ printf -v HEX_RED "%02x" "$RED"
 printf -v HEX_GREEN "%02x" "$GREEN"
 
 #echo "tmp" $TEMP
-echo ${HEX_RED}${HEX_GREEN}${HEX_BLUE}
+echo ${HEX_RED} ${HEX_GREEN} ${HEX_BLUE}
